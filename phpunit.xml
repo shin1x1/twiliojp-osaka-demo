@@ -12,6 +12,7 @@
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory>./tests/</directory>
+            <directory>./packages/TwiliojpOsaka/Test/</directory>
         </testsuite>
     </testsuites>
     <filter>
