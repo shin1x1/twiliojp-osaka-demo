@@ -9,7 +9,7 @@ class TelephoneNo
     use ReadOnlyTrait;
 
     /**
-     * @var TelephoneNo
+     * @var string
      */
     private $telNo;
 
