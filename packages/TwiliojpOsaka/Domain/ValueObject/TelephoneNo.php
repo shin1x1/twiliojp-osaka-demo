@@ -26,6 +26,13 @@ class TelephoneNo
      */
     public function getFullTelNo()
     {
-        return '+81' . $this->telNo;
+        if (empty($this->telNo)) {
+            return '';
+        }
+        if (preg_match('/\A\+/', $this->telNo) > 0) {
+            return $this->telNo;
+        }
+
+        return '+81' . preg_replace('/\A[0]+/', '', $this->telNo);
     }
 }
