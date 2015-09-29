@@ -2,6 +2,8 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    protected static $migrated = false;
+
     /**
      * The base URL to use while testing the application.
      *
@@ -21,5 +23,23 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    /**
+     *
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        if (static::$migrated) {
+            return;
+        }
+
+        /** @var \Illuminate\Contracts\Console\Kernel $artisan */
+        $artisan = app(Illuminate\Contracts\Console\Kernel::class);
+        $artisan->call('migrate');
+
+        static::$migrated = true;
     }
 }
