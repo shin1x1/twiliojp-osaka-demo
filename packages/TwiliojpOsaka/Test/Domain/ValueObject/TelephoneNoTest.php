@@ -26,4 +26,25 @@ class TelephoneNoTest extends \PHPUnit_Framework_TestCase
             [null, ''],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider getDataForGetMaskedTelNo
+     */
+    public function getMaskedTelNo($telNo, $expected)
+    {
+        $this->assertSame($expected, (new TelephoneNo($telNo))->getMaskedTelNo());
+    }
+
+    /**
+     * @return array
+     */
+    public function getDataForGetMaskedTelNo()
+    {
+        return [
+            ['0612345678', '****-****-5678'],
+            ['', ''],
+            [null, ''],
+        ];
+    }
 }

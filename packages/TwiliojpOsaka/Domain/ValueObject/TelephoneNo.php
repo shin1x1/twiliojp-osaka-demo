@@ -39,6 +39,18 @@ class TelephoneNo
     /**
      * @return string
      */
+    public function getMaskedTelNo()
+    {
+        if (empty($this->telNo)) {
+            return '';
+        }
+
+        return '****-****-' . substr($this->telNo, -4);
+    }
+
+    /**
+     * @return string
+     */
     public function getTelNo()
     {
         return $this->telNo;

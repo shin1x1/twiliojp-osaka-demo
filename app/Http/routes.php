@@ -16,6 +16,7 @@
 
 use App\Http\Requests\GatheringRequest;
 use Illuminate\Support\Collection;
+use Psr\Log\LoggerInterface;
 use Shin1x1\TwiliojpOsaka\Application\Service\TelephoneService;
 use Shin1x1\TwiliojpOsaka\Domain\Entity\Receiver;
 use Shin1x1\TwiliojpOsaka\Domain\Repository\ReceiverRepository;
@@ -27,7 +28,7 @@ $router->get('/', function () {
 });
 
 $router->group(['prefix' => '/twilio'], function () use ($router) {
-    $router->get('/calling', function (TelephoneService $service, ReceiverRepository $receiverRepository) {
+    $router->get('/calling', function (TelephoneService $service, ReceiverRepository $receiverRepository, LoggerInterface $logger) {
         $receivers = $receiverRepository->findAll();
         if (!($receivers instanceof Collection)) {
             $receivers = collect($receivers);
@@ -37,8 +38,9 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         $url = url('/twilio/calling/response');
 
         // TODO: エラー処理、連携部分のログ化
-        $receivers->each(function (Receiver $receiver) use ($service, $fromNo, $url) {
+        $receivers->each(function (Receiver $receiver) use ($service, $fromNo, $url, $logger) {
             $service->calling($fromNo, $receiver, $url);
+            $logger->info('電話をかけた', ['telNo' => $receiver->getTelNo()->getMaskedTelNo()]);
         });
 
         return response('ok');
@@ -48,9 +50,11 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         return response()->view('twilio.response', [], 200, ['Content-type' => 'text/xml']);
     });
 
-    $router->post('/gathering', function (GatheringRequest $request) {
+    $router->post('/gathering', function (GatheringRequest $request, LoggerInterface $logger) {
         $pushed = $request->input('Digits');
         $telNo = new TelephoneNo($request->input('To'));
+
+        $logger->info('プッシュフォンを操作', ['telNo' => $telNo->getMaskedTelNo(), 'pushed' => $pushed]);
 
         $receiver = new Receiver($telNo, ''); // name is dummy
 
