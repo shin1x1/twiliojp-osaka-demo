@@ -13,5 +13,4 @@ before_script:
 script:
   - composer install --prefer-source --no-interaction --dev
   - php artisan key:generate
-  - php artisan migrate
   - ./vendor/bin/phpunit
