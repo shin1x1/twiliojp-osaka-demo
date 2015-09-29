@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Shin1x1\TwiliojpOsaka\Domain\Repository\GatheringLogRepository;
 use Shin1x1\TwiliojpOsaka\Domain\Repository\ReceiverRepository;
+use Shin1x1\TwiliojpOsaka\Infrastructure\Repository\GatheringLogRepositoryOnEloquent;
 use Shin1x1\TwiliojpOsaka\Infrastructure\Repository\ReceiverRepositoryOnEnv;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(ReceiverRepository::class, ReceiverRepositoryOnEnv::class);
+        $this->app->bind(GatheringLogRepository::class, GatheringLogRepositoryOnEloquent::class);
     }
 }
