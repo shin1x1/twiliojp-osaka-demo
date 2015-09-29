@@ -2,12 +2,12 @@
 namespace Shin1x1\TwiliojpOsaka\Domain\ValueObject;
 
 
-use Shin1x1\Ddd\Domain\ValueObject\ReadOnlyTrait;
-
+/**
+ * Class TelephoneNo
+ * @package Shin1x1\TwiliojpOsaka\Domain\ValueObject
+ */
 class TelephoneNo
 {
-    use ReadOnlyTrait;
-
     /**
      * @var string
      */
@@ -34,5 +34,13 @@ class TelephoneNo
         }
 
         return '+81' . preg_replace('/\A[0]+/', '', $this->telNo);
+    }
+
+    /**
+     * @return string
+     */
+    public function getTelNo()
+    {
+        return $this->telNo;
     }
 }
