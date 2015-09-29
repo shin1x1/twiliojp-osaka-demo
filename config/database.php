@@ -1,5 +1,15 @@
 <?php
 
+$DATABASE_URL = env('DATABASE_URL');
+if (!empty($DATABASE_URL)) {
+    $url = parse_url($DATABASE_URL);
+    putenv('DB_CONNECTION=' . $url['scheme']);
+    putenv('DB_HOST=' . $url['host']);
+    putenv('DB_DATABASE=' . substr($url['path'], 1));
+    putenv('DB_USERNAME=' . $url['user']);
+    putenv('DB_PASSWORD=' . $url['pass']);
+}
+
 return [
 
     /*
@@ -64,7 +74,7 @@ return [
             'strict'    => false,
         ],
 
-        'pgsql' => [
+        'postgres' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'forge'),
