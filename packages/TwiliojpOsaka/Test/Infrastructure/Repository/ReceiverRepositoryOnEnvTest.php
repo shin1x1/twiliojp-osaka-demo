@@ -20,6 +20,6 @@ class ReceiverRepositoryOnEnvTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(1, $receivers);
         $this->assertSame('hoge', $receivers[0]->getName());
-        $this->assertSame('0612345678', $receivers[0]->getTelNo()->telNo);
+        $this->assertSame('0612345678', $receivers[0]->getTelNo()->getTelNo());
     }
 }
