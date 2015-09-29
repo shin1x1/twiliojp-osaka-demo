@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Log\Writer;
 use Illuminate\Support\ServiceProvider;
+use Psr\Log\LoggerInterface;
 use Shin1x1\TwiliojpOsaka\Domain\Repository\GatheringLogRepository;
 use Shin1x1\TwiliojpOsaka\Domain\Repository\ReceiverRepository;
 use Shin1x1\TwiliojpOsaka\Infrastructure\Repository\GatheringLogRepositoryOnEloquent;
@@ -15,9 +17,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Writer $logger)
     {
-        //
+        $logger->useFiles('php://stdout');
     }
 
     /**
