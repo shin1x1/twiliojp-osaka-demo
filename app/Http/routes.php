@@ -19,6 +19,7 @@ use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
 use Shin1x1\TwiliojpOsaka\Application\Service\TelephoneService;
 use Shin1x1\TwiliojpOsaka\Domain\Entity\Receiver;
+use Shin1x1\TwiliojpOsaka\Domain\Repository\GatheringLogRepository;
 use Shin1x1\TwiliojpOsaka\Domain\Repository\ReceiverRepository;
 use Shin1x1\TwiliojpOsaka\Domain\Service\GatherCommandFactory;
 use Shin1x1\TwiliojpOsaka\Domain\ValueObject\TelephoneNo;
@@ -70,5 +71,8 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         return response()->view($template, [], 200, ['Content-type' => 'text/xml']);
     });
 
+    $router->get('/logs', function (GatheringLogRepository $repository) {
+        return view('twilio.logs', ['logs' => $repository->findAll()]);
+    });
 });
 
