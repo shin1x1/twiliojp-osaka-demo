@@ -10,4 +10,9 @@ interface GatheringLogRepository
      * @return GatheringLog
      */
     public function add(GatheringLog $log);
+
+    /**
+     * @return GatheringLog[]
+     */
+    public function findAll();
 }
