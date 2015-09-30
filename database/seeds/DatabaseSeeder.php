@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        User::create([
+            'name'     => 'twilio',
+            'password' => Hash::make('m7n2PnRbY1nRgtRATWVm'),
+        ]);
 
         Model::reguard();
     }

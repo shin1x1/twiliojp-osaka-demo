@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    use WithoutMiddleware;
+
     protected static $migrated = false;
 
     /**

@@ -27,7 +27,7 @@ $router->get('/', function () {
     return view('welcome');
 });
 
-$router->group(['prefix' => '/twilio'], function () use ($router) {
+$router->group(['prefix' => '/twilio', 'middleware' => 'auth.basic'], function () use ($router) {
     $router->get('/calling', function (TelephoneService $service, ReceiverRepository $receiverRepository, LoggerInterface $logger) {
         $receivers = $receiverRepository->findAll();
         if (!($receivers instanceof Collection)) {
@@ -35,9 +35,8 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         }
 
         $fromNo = new TelephoneNo(env('TWILIO_TEL_NO'));
-        $url = url('/twilio/calling/response');
+        $url = url_with_credential('/twilio/calling/response');
 
-        // TODO: エラー処理、連携部分のログ化
         $receivers->each(function (Receiver $receiver) use ($service, $fromNo, $url, $logger) {
             $service->calling($fromNo, $receiver, $url);
             $logger->info('電話をかけた', ['telNo' => $receiver->getTelNo()->getMaskedTelNo()]);
@@ -71,4 +70,12 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
     });
 
 });
+
+if (!function_exists('url_with_credential')) {
+    function url_with_credential($path)
+    {
+        $credential = env('TWILIO_CREDENTIAL');
+        return preg_replace('#\A(http://|https://)#', '\1' . $credential . '@', url($path));
+    }
+}
 

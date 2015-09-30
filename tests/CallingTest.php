@@ -34,6 +34,6 @@ class CallingTest extends TestCase
     {
         $this->post('/twilio/calling/response')
             ->see('<Say')
-            ->see('<Gather');
+            ->see('<Gather timeout="10" numDigits="1" action="http://user:pass@localhost/twilio/gathering">');
     }
 }
