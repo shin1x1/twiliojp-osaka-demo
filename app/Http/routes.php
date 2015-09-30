@@ -38,7 +38,6 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         $fromNo = new TelephoneNo(env('TWILIO_TEL_NO'));
         $url = url('/twilio/calling/response');
 
-        // TODO: エラー処理、連携部分のログ化
         $receivers->each(function (Receiver $receiver) use ($service, $fromNo, $url, $logger) {
             $service->calling($fromNo, $receiver, $url);
             $logger->info('電話をかけた', ['telNo' => $receiver->getTelNo()->getMaskedTelNo()]);
