@@ -103,4 +103,16 @@ class GatheringLog
     {
         $this->created_at = $created_at;
     }
+
+    /**
+     * @return string
+     */
+    public function toJson()
+    {
+        return [
+            'telephoneNo' => $this->telephoneNo->getMaskedTelNo(),
+            'pushed'      => $this->pushed,
+            'created_at'  => $this->created_at,
+        ];
+    }
 }
