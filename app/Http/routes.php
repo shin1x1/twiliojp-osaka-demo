@@ -74,4 +74,3 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         return view('twilio.logs', ['logs' => $repository->findAll()]);
     });
 });
-
