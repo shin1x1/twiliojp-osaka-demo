@@ -11,7 +11,7 @@ class GatheringTest extends TestCase
     {
         parent::setUp();
 
-        (new GatheringLog)->truncate();
+        (new GatheringLog())->truncate();
     }
 
     /**

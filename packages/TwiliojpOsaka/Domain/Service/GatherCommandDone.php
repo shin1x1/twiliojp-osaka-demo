@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Domain\Service;
 
 use Shin1x1\TwiliojpOsaka\Domain\Entity\GatheringLog;
@@ -19,7 +20,7 @@ class GatherCommandDone extends AbstractGatherCommand
 
     /**
      * @param GatheringLogRepository $repository
-     * @param Receiver $receiver
+     * @param Receiver               $receiver
      */
     public function __construct(GatheringLogRepository $repository, Receiver $receiver)
     {
@@ -28,7 +29,7 @@ class GatherCommandDone extends AbstractGatherCommand
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function execute($pushed)
     {

@@ -1,10 +1,9 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Domain\ValueObject;
 
-
 /**
- * Class TelephoneNo
- * @package Shin1x1\TwiliojpOsaka\Domain\ValueObject
+ * Class TelephoneNo.
  */
 class TelephoneNo
 {
@@ -33,7 +32,7 @@ class TelephoneNo
             return $this->telNo;
         }
 
-        return '+81' . preg_replace('/\A[0]+/', '', $this->telNo);
+        return '+81'.preg_replace('/\A[0]+/', '', $this->telNo);
     }
 
     /**
@@ -45,7 +44,7 @@ class TelephoneNo
             return '';
         }
 
-        return '****-****-' . substr($this->telNo, -4);
+        return '****-****-'.substr($this->telNo, -4);
     }
 
     /**

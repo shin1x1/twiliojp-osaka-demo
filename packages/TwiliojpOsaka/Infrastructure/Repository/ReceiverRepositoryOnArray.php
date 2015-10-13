@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Infrastructure\Repository;
 
 use Shin1x1\TwiliojpOsaka\Domain\Entity\Receiver;
@@ -17,7 +18,7 @@ class ReceiverRepositoryOnArray implements ReceiverRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findAll()
     {

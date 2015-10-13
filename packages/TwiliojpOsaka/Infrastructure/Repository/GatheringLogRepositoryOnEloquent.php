@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Infrastructure\Repository;
 
 use App\GatheringLog as Eloquent;
@@ -23,6 +24,7 @@ class GatheringLogRepositoryOnEloquent implements GatheringLogRepository
 
     /**
      * @param GatheringLog $log
+     *
      * @return GatheringLog
      */
     public function add(GatheringLog $log)
@@ -34,7 +36,7 @@ class GatheringLogRepositoryOnEloquent implements GatheringLogRepository
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findAll()
     {

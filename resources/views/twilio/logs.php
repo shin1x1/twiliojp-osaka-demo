@@ -1,6 +1,6 @@
 <?php
 /**
- * @var GatheringLog[] $logs
+ * @var GatheringLog[]
  */
 use Shin1x1\TwiliojpOsaka\Domain\Entity\GatheringLog;
 

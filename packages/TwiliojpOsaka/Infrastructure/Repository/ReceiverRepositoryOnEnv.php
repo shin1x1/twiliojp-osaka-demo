@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Infrastructure\Repository;
 
 use Shin1x1\TwiliojpOsaka\Domain\Entity\Receiver;
@@ -10,7 +11,7 @@ class ReceiverRepositoryOnEnv implements ReceiverRepository
     const MAX_RECEIVER = 100;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function findAll()
     {

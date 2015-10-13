@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Test\Domain\ValueObject;
 
 use Shin1x1\TwiliojpOsaka\Domain\ValueObject\TelephoneNo;

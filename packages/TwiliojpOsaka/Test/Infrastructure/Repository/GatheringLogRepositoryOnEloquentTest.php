@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Test\Domain\Repository;
 
 use App\GatheringLog;
@@ -25,7 +26,6 @@ class GatheringLogRepositoryOnEloquentTest extends \TestCase
         ]);
         $eloquent->reguard();
     }
-
 
     /**
      * @test
