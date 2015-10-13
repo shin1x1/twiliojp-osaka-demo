@@ -1,7 +1,6 @@
 <?php
 namespace Shin1x1\TwiliojpOsaka\Domain\ValueObject;
 
-
 /**
  * Class TelephoneNo
  * @package Shin1x1\TwiliojpOsaka\Domain\ValueObject
