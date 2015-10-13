@@ -3,11 +3,11 @@
 $DATABASE_URL = env('DATABASE_URL');
 if (!empty($DATABASE_URL)) {
     $url = parse_url($DATABASE_URL);
-    putenv('DB_CONNECTION=' . $url['scheme']);
-    putenv('DB_HOST=' . $url['host']);
-    putenv('DB_DATABASE=' . substr($url['path'], 1));
-    putenv('DB_USERNAME=' . $url['user']);
-    putenv('DB_PASSWORD=' . $url['pass']);
+    putenv('DB_CONNECTION='.$url['scheme']);
+    putenv('DB_HOST='.$url['host']);
+    putenv('DB_DATABASE='.substr($url['path'], 1));
+    putenv('DB_USERNAME='.$url['user']);
+    putenv('DB_PASSWORD='.$url['pass']);
 }
 
 return [

@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Domain\Entity;
 
 use Carbon\Carbon;
@@ -27,7 +28,7 @@ class GatheringLog
     private $created_at;
 
     /**
-     * @param int|null $id
+     * @param int|null    $id
      * @param TelephoneNo $telephoneNo
      * @param $pushed
      * @param Carbon|null $created_at

@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Application\Service;
 
 use Services_Twilio;
@@ -19,8 +20,8 @@ class TelephoneService
 
     /**
      * @param TelephoneNo $fromNo
-     * @param Receiver $receiver
-     * @param string $callbackUrl
+     * @param Receiver    $receiver
+     * @param string      $callbackUrl
      */
     public function calling(TelephoneNo $fromNo, Receiver $receiver, $callbackUrl)
     {

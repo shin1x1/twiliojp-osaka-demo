@@ -1,11 +1,11 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Domain\Entity;
 
 use Shin1x1\TwiliojpOsaka\Domain\ValueObject\TelephoneNo;
 
 /**
- * Class TelephoneNo
- * @package Shin1x1\TwiliojpOsaka\Domain\Entity
+ * Class TelephoneNo.
  */
 class Receiver
 {

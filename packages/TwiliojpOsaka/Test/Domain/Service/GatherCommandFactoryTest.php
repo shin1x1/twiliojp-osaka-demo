@@ -1,4 +1,5 @@
 <?php
+
 namespace Shin1x1\TwiliojpOsaka\Test\Domain\Service;
 
 use Shin1x1\TwiliojpOsaka\Domain\Entity\Receiver;

@@ -11,9 +11,8 @@
 |
 */
 /**
- * @var \Illuminate\Routing\Router $router
+ * @var \Illuminate\Routing\Router
  */
-
 use App\Http\Requests\GatheringRequest;
 use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
@@ -74,4 +73,3 @@ $router->group(['prefix' => '/twilio'], function () use ($router) {
         return view('twilio.logs', ['logs' => $repository->findAll()]);
     });
 });
-
